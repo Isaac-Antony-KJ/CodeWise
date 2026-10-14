@@ -1,0 +1,23 @@
+GET http://127.0.0.1:8000/questions/
+Content-Type: application/json
+
+###
+
+PUT http://127.0.0.1:8000/questions/3/
+Content-Type: application/json
+
+{
+    "title": "Armstron number checker",
+    "language": "java",
+    "difficulty_level": "easy",
+    "notes": "This is a sample question to check if the numbe ris armstrong or not",
+    "topic": "Loops",
+    "sample_input": "5",
+    "sample_output": "120",
+    "is_active": "true"
+}
+
+###
+
+GET http://127.0.0.1:8000/questions/1/
+Accept: application/json
