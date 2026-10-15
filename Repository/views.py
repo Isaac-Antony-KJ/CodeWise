@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from Repository.models import Questions
-from Repository.serializers import QuestionSerializer
+from Repository.models import Questions,Submissions
+from Repository.serializers import QuestionSerializer,SubmissionSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
@@ -39,3 +39,14 @@ class QuestionRetrieveUpdateDeleteView(APIView):
             return Response(data=serializer_instance.data)                  # Return the serialized data as a response
         else:
             return Response(data=serializer_instance.errors)                # Return the validation errors as a response
+
+    def delete(self,request,pk):                                            #pk ia the primary key of the question to delete
+        Questions.object.filter(id=pk).delete()                             #Deletes the question object with the given primary key
+        return Response(data={"message":"Question deleted succesfully"})    #Returns a succesfully deleted message
+
+
+class SubmissionsListCreateView(APIView):
+    def get(self,request):
+        qs=Submissions.objects.all()                                       #ORM Quesy to get all submissions
+        serializer_instance=SubmissionSerializer(qs,many=True)
+        return Response(data=serializer_instance.data)

@@ -7,7 +7,7 @@ PUT http://127.0.0.1:8000/questions/3/
 Content-Type: application/json
 
 {
-    "title": "Armstron number checker",
+    "title": "Armstrong number checker",
     "language": "java",
     "difficulty_level": "easy",
     "notes": "This is a sample question to check if the numbe ris armstrong or not",
@@ -21,3 +21,11 @@ Content-Type: application/json
 
 GET http://127.0.0.1:8000/questions/1/
 Accept: application/json
+###
+DELETE http://127.0.0.1:8000/questions/3/
+Accept: application/json
+###
+
+GET http://127.0.0.1:8000/submission/
+Accept: application/json
+###
